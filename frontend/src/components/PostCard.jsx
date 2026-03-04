@@ -4,9 +4,8 @@ import { Calendar, User, ArrowUpRight } from 'lucide-react';
 import { motion } from 'framer-motion';
 
 const IMAGES = [
-    'https://images.unsplash.com/photo-1499750310107-5fef28a66643?w=800&auto=format&fit=crop&q=60',
-    'https://images.unsplash.com/photo-1486312338219-ce68d2c6f44d?w=800&auto=format&fit=crop&q=60',
-    'https://images.unsplash.com/photo-1677442136019-21780ecad995?w=800&auto=format&fit=crop&q=60',
+    'https://images.unsplash.com/photo-1499750310107-5fef28a66643?w=800&auto=format&fit=crop&q=60', // blogging / writing
+    'https://images.unsplash.com/photo-1504307651254-35680f356dfd?w=800&auto=format&fit=crop&q=60', // construction
 ];
 
 const PostCard = ({ post, index = 0 }) => {

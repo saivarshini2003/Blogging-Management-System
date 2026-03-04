@@ -3,7 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import { AuthContext } from '../context/AuthContext';
 import { motion } from 'framer-motion';
 import { Send, ArrowLeft } from 'lucide-react';
-import axios from 'axios';
+import axios from '../lib/axios';
 
 const CreatePost = () => {
     const [title, setTitle] = useState('');
@@ -23,7 +23,7 @@ const CreatePost = () => {
         setLoading(true);
         setError('');
         try {
-            await axios.post('http://localhost:5000/api/blogs',
+            await axios.post('/api/blogs',
                 { title, content, published: true },
                 { headers: { Authorization: `Bearer ${token}` } }
             );

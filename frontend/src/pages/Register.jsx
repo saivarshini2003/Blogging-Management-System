@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import { Mail, Lock, User, UserPlus, ArrowRight } from 'lucide-react';
-import axios from 'axios';
+import axios from '../lib/axios';
 
 const inputStyle = {
     width: '100%',
@@ -30,7 +30,7 @@ const Register = () => {
         setLoading(true);
         setError('');
         try {
-            await axios.post('http://localhost:5000/api/auth/register', { name, email, password });
+            await axios.post('/api/auth/register', { name, email, password });
             navigate('/login');
         } catch (err) {
             setError(err.response?.data?.error || 'Registration failed. Try again.');

@@ -3,7 +3,7 @@ import { useParams, useNavigate } from 'react-router-dom';
 import { AuthContext } from '../context/AuthContext';
 import { motion } from 'framer-motion';
 import { Calendar, User, ArrowLeft, Trash2, Share2 } from 'lucide-react';
-import axios from 'axios';
+import axios from '../lib/axios';
 
 const FALLBACK_POST = {
     id: 1,
@@ -21,7 +21,7 @@ const PostDetail = () => {
     const [loading, setLoading] = useState(true);
 
     useEffect(() => {
-        axios.get(`http://localhost:5000/api/blogs/${id}`)
+        axios.get(`/api/blogs/${id}`)
             .then(({ data }) => setPost(data))
             .catch(() => setPost(FALLBACK_POST))
             .finally(() => setLoading(false));
@@ -30,7 +30,7 @@ const PostDetail = () => {
     const handleDelete = async () => {
         if (!window.confirm('Delete this post?')) return;
         try {
-            await axios.delete(`http://localhost:5000/api/blogs/${id}`, {
+            await axios.delete(`/api/blogs/${id}`, {
                 headers: { Authorization: `Bearer ${token}` },
             });
             navigate('/');

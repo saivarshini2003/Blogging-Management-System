@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import Hero from '../components/Hero';
 import PostCard from '../components/PostCard';
-import axios from 'axios';
+import axios from '../lib/axios';
 
 const FALLBACK = [
     { id: 1, title: 'Designing the Future of Mobile Interfaces', content: 'Explore how glassmorphism and micro-interactions are redefining the modern web experience for millions worldwide.', createdAt: new Date(), author: { name: 'Alex Rivera' } },
@@ -14,7 +14,7 @@ const Home = () => {
     const [loading, setLoading] = useState(true);
 
     useEffect(() => {
-        axios.get('http://localhost:5000/api/blogs')
+        axios.get('/api/blogs')
             .then(({ data }) => setPosts(data.length ? data : FALLBACK))
             .catch(() => setPosts(FALLBACK))
             .finally(() => setLoading(false));
